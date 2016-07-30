@@ -84,11 +84,16 @@ rocky.on('draw', function(drawEvent) {
   var stepCount = strider.getStepCount();
   var stepAverage = strider.getStepAverage();
 
+  var fillColor;
+
   if (stepCount >= stepAverage) {
-    ctx.fillStyle = 'jaegergreen';
+    fillColor = 'jaegergreen';
   } else {
-    ctx.fillStyle = 'pictonblue';
+    fillColor = 'pictonblue';
   }
+
+  ctx.fillStyle = fillColor;
+
   ctx.font = '24px bold Gothic';
 
   // STEP COUNT
@@ -101,7 +106,7 @@ rocky.on('draw', function(drawEvent) {
   ctx.fillText(numberWithCommas(stepCount), center - (combinedWidth / 2), ((is_round) ? 58 : 54));
 
   // SHOE
-  shoe.d(ctx, ctx.fillStyle, (center - (combinedWidth / 2)) + (stepWidth - 6), 45);
+  shoe.d(ctx, fillColor, (center - (combinedWidth / 2)) + (stepWidth - 6), 45);
 
   drawReason = {};
 });
