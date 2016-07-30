@@ -108,7 +108,6 @@ rocky.on('draw', function(drawEvent) {
   // SHOE
   shoe.d(ctx, fillColor, (center - (combinedWidth / 2)) + (stepWidth - 6), 45);
 
-  drawReason = {};
 });
 
 // TICK
