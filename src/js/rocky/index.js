@@ -40,11 +40,11 @@ var strider = {
     var radius = 66;
     var centerX = 70;
     var centerY = 84;
+    ctx.fillStyle = 'darkgray';
     for(var index = 0; index < points; index++) {
       var x = centerX + radius * Math.cos(2 * Math.PI * index / points);
       var y = centerY + radius * Math.sin(2 * Math.PI * index / points);   
-      ctx.fillStyle = 'darkgray';
-
+      
       // TODO: Can't draw circles
       ctx.fillRect(x, y, 4, 4);
       //ctx.fillRadial(x, y, 4, 0, 0, Math.PI);
