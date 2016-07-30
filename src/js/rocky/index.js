@@ -1,6 +1,5 @@
 var rocky = _rocky;
 
-// ¯\_(ツ)_/¯
 var health = {
   sumAveraged: function(metric, time_start, time_end, scope) {
     return 0;
@@ -71,8 +70,6 @@ rocky.on('draw', function(drawEvent) {
   // BLANK CANVAS
   ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
 
-  ctx.fillStyle = '#FFF';
-
   // DOTS
   strider.drawDots(ctx);
 
@@ -80,6 +77,7 @@ rocky.on('draw', function(drawEvent) {
   var clockTime = leftpad(d.getHours(), 2, 0) + ':' + leftpad(d.getMinutes(), 2, 0); // TODO: Detect 24h
   ctx.font = '30px bolder Bitham';
   ctx.textAlign = 'center';
+  ctx.fillStyle = '#FFF';
   ctx.fillText(clockTime, w / 2, ((is_round) ? 82 : 78));
 
   // STEPS
