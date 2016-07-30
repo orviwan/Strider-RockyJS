@@ -1,0 +1,23 @@
+{
+  "name": "Rocky-Strider",
+  "author": "MakeAwesomeHappen",
+  "version": "1.0.0",
+  "keywords": ["pebble-app"],
+  "private": true,
+  "dependencies": {},
+  "pebble": {
+    "displayName": "Rocky Strider",
+    "uuid": "7c3016d5-9a8b-41aa-838e-418f4b447e4d",
+    "sdkVersion": "3",
+    "projectType": "rocky",
+    "enableMultiJS": true,
+    "watchapp": {
+      "watchface": true
+    },
+    "targetPlatforms": [
+        "basalt",
+        "chalk",
+        "diorite"
+    ]
+  }
+}
