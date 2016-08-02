@@ -45,9 +45,7 @@ var strider = {
       var x = centerX + radius * Math.cos(2 * Math.PI * index / points);
       var y = centerY + radius * Math.sin(2 * Math.PI * index / points);   
       
-      // TODO: Can't draw circles
-      ctx.fillRect(x, y, 4, 4);
-      //ctx.fillRadial(x, y, 4, 0, 0, Math.PI);
+      ctx.pblFillRadial(x, y, 2, 0, 0, 1.999 * Math.PI);
     }
   }
 }
@@ -83,6 +81,7 @@ rocky.on('draw', function(drawEvent) {
   // STEPS
   var stepCount = strider.getStepCount();
   var stepAverage = strider.getStepAverage();
+  var stepGoal = strider.getStepGoal();
 
   var fillColor;
 
@@ -107,6 +106,20 @@ rocky.on('draw', function(drawEvent) {
 
   // SHOE
   shoe.d(ctx, fillColor, (center - (combinedWidth / 2)) + (stepWidth - 6), 45);
+
+
+  // TODO: convert degrees to radians
+  // Tidy the maths
+
+  // LINES
+  var deg = (1.99 * Math.PI) / 360;
+  ctx.pblFillRadial(70, 82, 70, 58, deg * -90, deg * ((360 - 90) * (stepCount / stepGoal)));
+
+  // GOAL
+  ctx.fillStyle = 'yellow';
+  var ang = 360 * stepAverage / stepGoal;
+  ctx.pblFillRadial(70, 82, 70, 58, (deg * ((360 - 90) * ang - 3)), deg * ((360 - 90) * ang));
+
 
 });
 
