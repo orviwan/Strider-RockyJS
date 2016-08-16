@@ -1,4 +1,4 @@
-var rocky = _rocky;
+var rocky = require('rocky');
 
 var health = {
   sumAveraged: function(metric, time_start, time_end, scope) {
@@ -7,7 +7,7 @@ var health = {
   sumToday: function(metric) {
     return 0;
   }
-}
+};
 
 var strider = {
   getStepGoal: function() {
@@ -17,7 +17,7 @@ var strider = {
     var time_end = new Date();
     time_end.setHours(23,59,59,999);
 
-    /* return health.sumAveraged('HealthMetricStepCount', time_start, time_end, 
+    /* return health.sumAveraged('HealthMetricStepCount', time_start, time_end,
       'HealthServiceTimeScopeDaily');*/
     return 9000;
   },
@@ -31,7 +31,7 @@ var strider = {
 
     var time_end = new Date();
 
-    /*return health.sumAveraged('HealthMetricStepCount', time_start, time_end, 
+    /*return health.sumAveraged('HealthMetricStepCount', time_start, time_end,
       'HealthServiceTimeScopeDaily');*/
     return 4000;
   },
@@ -43,12 +43,11 @@ var strider = {
     ctx.fillStyle = 'darkgray';
     for(var index = 0; index < points; index++) {
       var x = centerX + radius * Math.cos(2 * Math.PI * index / points);
-      var y = centerY + radius * Math.sin(2 * Math.PI * index / points);   
-      
-      ctx.pblFillRadial(x, y, 2, 0, 0, 1.999 * Math.PI);
+      var y = centerY + radius * Math.sin(2 * Math.PI * index / points);
+      ctx.rockyFillRadial(parseInt(x), parseInt(y), 3, 1, 0, 2 * Math.PI);
     }
   }
-}
+};
 
 // DRAW
 rocky.on('draw', function(drawEvent) {
@@ -112,13 +111,13 @@ rocky.on('draw', function(drawEvent) {
   // Tidy the maths
 
   // LINES
-  var deg = (1.99 * Math.PI) / 360;
-  ctx.pblFillRadial(70, 82, 70, 58, deg * -90, deg * ((360 - 90) * (stepCount / stepGoal)));
+  var deg = (2 * Math.PI) / 360;
+  ctx.rockyFillRadial(70, 82, 70, 58, deg * -90, deg * ((360 - 90) * (stepCount / stepGoal)));
 
   // GOAL
   ctx.fillStyle = 'yellow';
   var ang = 360 * stepAverage / stepGoal;
-  ctx.pblFillRadial(70, 82, 70, 58, (deg * ((360 - 90) * ang - 3)), deg * ((360 - 90) * ang));
+  ctx.rockyFillRadial(70, 82, 70, 58, (deg * ((360 - 90) * ang - 3)), deg * ((360 - 90) * ang));
 
 
 });
@@ -133,7 +132,7 @@ rocky.on('minutechange', function() {
 function numberWithCommas(n) {
   var parts=n.toString().split(".");
   return parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "");
-};
+}
 
 function leftpad(str, len, ch) {
   str = String(str);
@@ -144,7 +143,7 @@ function leftpad(str, len, ch) {
     str = ch + str;
   }
   return str;
-};
+}
 
 // Heiko's magic shoe
 var shoe = {"w":0,"h":0,"d":function($, color, x, y){
