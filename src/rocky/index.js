@@ -44,7 +44,7 @@ var strider = {
     for(var index = 0; index < points; index++) {
       var x = centerX + radius * Math.cos(2 * Math.PI * index / points);
       var y = centerY + radius * Math.sin(2 * Math.PI * index / points);
-      ctx.rockyFillRadial(parseInt(x), parseInt(y), 3, 1, 0, 2 * Math.PI);
+      ctx.rockyFillRadial(parseInt(x), parseInt(y), 2, 1, 0, 2 * Math.PI);
     }
   }
 };
